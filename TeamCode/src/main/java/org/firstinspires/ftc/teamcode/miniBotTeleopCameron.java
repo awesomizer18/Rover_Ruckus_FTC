@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@TeleOp (name="MiniBot Arcade Teleop Cameron", group="Main")
 public class miniBotTeleopCameron extends LinearOpMode {
 
     DcMotor leftDrive;
