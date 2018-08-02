@@ -11,8 +11,8 @@ public class AidenMinibotTeleop extends OpMode {
     DcMotor motorR;
     @Override
     public void init() {
-        motorL = hardwareMap.get(DcMotor.class,"left;");
-        motorR = hardwareMap.get(DcMotor.class,"right;");
+        motorL = hardwareMap.get(DcMotor.class,"left");
+        motorR = hardwareMap.get(DcMotor.class,"right");
 
         motorL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorR.setDirection(DcMotorSimple.Direction.FORWARD);
