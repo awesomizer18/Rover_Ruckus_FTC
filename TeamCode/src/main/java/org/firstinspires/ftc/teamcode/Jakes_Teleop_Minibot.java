@@ -24,8 +24,16 @@ public class Jakes_Teleop_Minibot extends OpMode {
 
     @Override
     public void loop() {
-        leftDrive.setPower(-gamepad1.left_stick_y);
-        rightDrive.setPower(-gamepad1.right_stick_y);
+
+        float forwardPower = -gamepad1.left_stick_y;
+        float turnPower = gamepad1.right_stick_x;
+
+        float leftPower = forwardPower + turnPower;
+        float rightPower = forwardPower - turnPower;
+
+        leftDrive.setPower(leftPower);
+        rightDrive.setPower(rightPower);
+
 
     }
 }
