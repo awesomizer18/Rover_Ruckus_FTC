@@ -23,8 +23,15 @@ public class andrewMinibotTeleop extends OpMode{
 
     @Override
     public void loop() {
-        leftMotor.setPower(-gamepad1.left_stick_y);
-        rightMotor.setPower(-gamepad1.right_stick_y);
+
+        float forwardPower = -gamepad1.left_stick_y;
+        float turnPower = gamepad1.right_stick_x;
+
+        float leftPower = forwardPower + turnPower;
+        float rightPower = forwardPower - turnPower;
+
+        leftMotor.setPower(leftPower);
+        rightMotor.setPower(rightPower);
 
     }
 }
