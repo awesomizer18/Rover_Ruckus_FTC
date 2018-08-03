@@ -39,10 +39,12 @@ public class Heading {
         }
         return sumOfHeadings;
     }
-    /*public static Heading createFieldHeading(){
+   /* public static Heading createFieldHeading() {
+
+    }
+    public Heading createRelativeHeading(){
 
     }*/
-
     public void setRelativeOffset(float relativeOffset){
         this.relativeOffset = relativeOffset;
     }
