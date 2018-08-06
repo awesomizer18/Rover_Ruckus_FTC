@@ -31,11 +31,11 @@ public class Heading {
         return errorCorrecter(getAbsoluteHeading() + fieldOffset);
     }
     private static float errorCorrecter(float sumOfHeadings){
-        if (-180f > sumOfHeadings){
-            sumOfHeadings += 360f;
+        if (sumOfHeadings > 180f){
+            sumOfHeadings = ((sumOfHeadings + 180f) % 360f) - 180f;
         }
-        else if (sumOfHeadings > 180f){
-            sumOfHeadings -= 180f;
+        else if (sumOfHeadings < -180f) {
+            sumOfHeadings = 180f - ((180f - sumOfHeadings) % 360f);
         }
         return sumOfHeadings;
     }
