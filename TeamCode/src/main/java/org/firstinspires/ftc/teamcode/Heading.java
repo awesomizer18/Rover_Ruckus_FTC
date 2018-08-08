@@ -25,7 +25,7 @@ public class Heading {
     }
     public static float getAbsoluteHeading(){
         Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return errorCorrecter(angles.firstAngle);
+        return errorCorrecter(-angles.firstAngle);
     }
     public static float getFieldHeading(){
         return errorCorrecter(getAbsoluteHeading() + fieldOffset);
