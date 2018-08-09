@@ -1,39 +1,36 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous (name = "AidenAutoProgram", group = "")
 public class AidenMinibotAuto extends LinearOpMode {
-    DcMotor LeftDrive;
-    DcMotor RightDrive;
+    DcMotor leftDrive;
+    DcMotor rightDrive;
     @Override
     public void runOpMode() throws InterruptedException {
-        LeftDrive = hardwareMap.get(DcMotor.class,"left");
-        RightDrive = hardwareMap.get(DcMotor.class,"right");
+        leftDrive = hardwareMap.get(DcMotor.class,"left");
+        rightDrive = hardwareMap.get(DcMotor.class,"right");
 
-        LeftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
-        RightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        LeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        RightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         waitForStart();
 
-        LeftDrive.setPower(1.0);
-        RightDrive.setPower(1.0);
+        runAuto();
 
-        wait(3000);
+    }
 
-        LeftDrive.setPower(1.0);
-        RightDrive.setPower(-1.0);
+    public void runAuto() {
 
-        wait(2999);
+    }
+    public void setDrive(  double leftPower, double rightPower) {
 
-
+        leftDrive.setPower(leftPower);
+        rightDrive.setPower(rightPower);
 
     }
 }
