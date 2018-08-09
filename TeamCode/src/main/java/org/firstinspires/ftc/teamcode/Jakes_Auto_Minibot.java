@@ -26,17 +26,17 @@ public class Jakes_Auto_Minibot extends LinearOpMode {
         leftDrive.setPower(1.0);
         rightDrive.setPower(1.0);
 
-        wait(3000);
+        sleep(3000);
 
         rightDrive.setPower(1.0);
         leftDrive.setPower(-1.0);
 
-        wait(3000);
+       sleep(3000);
 
         leftDrive.setPower(1.0);
         rightDrive.setPower(-1.0);
 
-        wait(2568);
+        sleep(2568);
     }
 }
 
