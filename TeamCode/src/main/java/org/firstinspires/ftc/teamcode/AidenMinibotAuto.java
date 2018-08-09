@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous (name = "MyAutoProgram", group = "")
+@Autonomous (name = "AidenAutoProgram", group = "")
 public class AidenMinibotAuto extends LinearOpMode {
     DcMotor LeftDrive;
     DcMotor RightDrive;
@@ -33,7 +33,7 @@ public class AidenMinibotAuto extends LinearOpMode {
 
         wait(2999);
 
-        
+
 
     }
 }
