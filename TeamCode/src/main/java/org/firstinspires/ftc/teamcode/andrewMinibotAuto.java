@@ -28,11 +28,11 @@ public class andrewMinibotAuto extends LinearOpMode {
         leftDrive.setPower(1.0);
         rightDrive.setPower(1.0);
 
-        wait(3000);
+        sleep (3000);
 
         leftDrive.setPower(1.0);
         rightDrive.setPower(-1.0);
 
-        wait( 1500);
+        sleep ( 1500);
     }
 }
