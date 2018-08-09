@@ -23,7 +23,14 @@ public class AidenMinibotTeleop extends OpMode {
 
     @Override
     public void loop() {
-        motorL.setPower(-gamepad1.left_stick_y);
-        motorR.setPower(-gamepad1.right_stick_y);
+        float forwardPower = -gamepad1.left_stick_y;
+        float turnPower = gamepad1.right_stick_x;
+
+        float leftPower = forwardPower + turnPower;
+        float rightPower = forwardPower - turnPower;
+
+        motorL.setPower(leftPower);
+        motorR.setPower(rightPower);
+
     }
 }
