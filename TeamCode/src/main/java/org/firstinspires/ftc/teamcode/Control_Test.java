@@ -20,24 +20,16 @@ public class Control_Test extends LinearOpMode {
     private DcMotor backRightDrive;
 
     private BNO055IMU imu;
-/*
+
+    private double pGain = 0.01;
+
     PID_Controller turnController       = new PID_Controller(0.0, 0.0, 0.0);
-    PID_Controller turnHoldController   = new PID_Controller(0.0, 0.0, 0.0);
+    PID_Controller turnHoldController   = new PID_Controller(pGain, 0.0, 0.0);
     PID_Controller forwardController    = new PID_Controller(0.0, 0.0, 0.0);
     PID_Controller strafeController     = new PID_Controller(0.0, 0.0, 0.0);
-*/
-    PID_Controller turnController       = new PID_Controller();
-    PID_Controller turnHoldController   = new PID_Controller();
-    PID_Controller forwardController    = new PID_Controller();
-    PID_Controller strafeController     = new PID_Controller();
+
     @Override
     public void runOpMode() throws InterruptedException {
-        turnController.PID_Loop(0.0, 0.0, 0.0);
-        turnHoldController.PID_Loop(0.01, 0.0, 0.0);
-        forwardController.PID_Loop(0.0, 0.0, 0.0);
-        strafeController.PID_Loop(0.0, 0.0, 0.0);
-
-
         frontLeftDrive = hardwareMap.get(DcMotor.class, "fld");
         frontRightDrive = hardwareMap.get(DcMotor.class, "frd");
         backLeftDrive = hardwareMap.get(DcMotor.class, "bld");
@@ -66,18 +58,26 @@ public class Control_Test extends LinearOpMode {
         turnHoldController.setSetpoint(0.0); // Don't turn
         forwardController.setSetpoint(60.0); // Drive forwards 60 inches (5 feet)
 
-        Temperature temperature = imu.getTemperature();
         double currentHeading;
         double turnPower;
         while (opModeIsActive()) {
-            temperature = imu.getTemperature();
+            if (gamepad1.dpad_up || gamepad1.dpad_down)
+            {
+                if (gamepad1.dpad_up)
+                    pGain *= 1.1;
+                if (gamepad1.dpad_down)
+                    pGain /= 1.1;
+                turnHoldController = new PID_Controller(pGain, 0.0, 0.0);
+                turnHoldController.setSetpoint(0.0);
+                while (gamepad1.dpad_up || gamepad1.dpad_down);
+            }
             currentHeading = driveDirection.getRelativeHeading();
             turnPower = turnHoldController.update(currentHeading);
             setDrive(0.0, turnPower, 0.0);
 
+            telemetry.addData("P Gain", pGain);
             telemetry.addData("Heading", currentHeading);
             telemetry.addData("TurnPower", turnPower);
-            telemetry.addData("Temperature", temperature.temperature);
             telemetry.update();
         }
     }
