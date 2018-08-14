@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * Created by user on 7/10/2018.
  */
-
+// TODO: When creating a PID_Controller object, it doesn't accept Gains like it used to
 public class PID_Controller{
     ElapsedTime runtime;
 
@@ -21,18 +21,22 @@ public class PID_Controller{
     private double dValue = 0.0;
     private double DGAIN;
     private boolean isFirstTime = true;
+    // TODO: Either implement CONVERSION_RATE or remove it if the feature is forgotten.
     private double CONVERSION_RATE;
 
     public void PID_Loop(double PGAIN, double IGAIN, double DGAIN){
         this.runtime = new ElapsedTime();
+        // TODO: Make the constructor fully reset the controller
         this.runtime.reset();
         this.PGAIN = PGAIN;
         this.IGAIN = IGAIN;
         this.DGAIN = DGAIN;
     }
+
     public void setSetpoint(double newSetpoint) {
         this.setpoint = newSetpoint;
     }
+
     public double update(double input){
         lastError = error;
         error = setpoint - input;
@@ -48,7 +52,6 @@ public class PID_Controller{
         }
         return pValue + iValue + dValue;
     }
-
 
     public void resetPID() {
         resetPID(0.0);
