@@ -23,6 +23,9 @@ public class Heading {
     public static void setFieldOffset(float fieldOffset){
         Heading.fieldOffset = fieldOffset;
     }
+    public static void setImu(BNO055IMU imu) {
+        Heading.imu = imu;
+    }
     public static float getAbsoluteHeading(){
         Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return errorCorrecter(-angles.firstAngle);
