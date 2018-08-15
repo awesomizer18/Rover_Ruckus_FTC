@@ -12,6 +12,7 @@ public class Omni_Driver_Centric_Mode extends Omni_Parent
         correctionValueInDegrees = calculateHeading();
     }
 
+    
     public void cycle() {
         double leftPower;
         double rightPower;
