@@ -17,12 +17,11 @@ public class Control_Test extends LinearOpMode {
 
     private BNO055IMU imu;
 
-    private double dGain = 1.0;
+    private double dGain = 0.006;
+    private double pGain = 0.025;
 
-    PID_Controller turnController       = new PID_Controller(0.025, 0.0, 0.0);
-    PID_Controller turnHoldController   = new PID_Controller(0.0, 0.0, dGain);
-    PID_Controller forwardController    = new PID_Controller(0.0, 0.0, 0.0);
-    PID_Controller strafeController     = new PID_Controller(0.0, 0.0, 0.0);
+    PID_Controller PController = new PID_Controller(pGain, 0.0, 0.0);
+    PID_Controller DController = new PID_Controller(0.0, 0.0, dGain);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -51,12 +50,14 @@ public class Control_Test extends LinearOpMode {
 
         Heading driveDirection = Heading.createRelativeHeading(0f);
 
-        turnController.setSetpoint(0.0);
-        turnHoldController.setSetpoint(0.0);
+        PController.setSetpoint(0.0);
+        DController.setSetpoint(0.0);
 
         double currentHeading;
-        double turnPower;
-        double turnHoldPower;
+        double PPower;
+        double DPower;
+        boolean useP = true;
+        boolean useD = false;
         while (opModeIsActive()) {
             if (gamepad1.dpad_up || gamepad1.dpad_down)
             {
@@ -64,24 +65,38 @@ public class Control_Test extends LinearOpMode {
                     dGain *= 1.1;
                 if (gamepad1.dpad_down)
                     dGain /= 1.1;
-                turnHoldController = new PID_Controller(0.0, 0.0, dGain);
-                turnHoldController.setSetpoint(0.0);
+                DController = new PID_Controller(0.0, 0.0, dGain);
+                DController.setSetpoint(0.0);
                 while (gamepad1.dpad_up || gamepad1.dpad_down);
                 for (int i = 0; i < 3; i++)
                 {
-                    turnHoldController.update(driveDirection.getRelativeHeading());
+                    DController.update(driveDirection.getRelativeHeading());
                 }
             }
+
+            if (gamepad1.x) {
+                useP = !useP;
+                while (gamepad1.x);
+            }
+
+            if (gamepad1.y) {
+                useD = !useD;
+                while (gamepad1.y);
+            }
+
             currentHeading = driveDirection.getRelativeHeading();
 
-            turnPower = turnController.update(currentHeading);
-            turnHoldPower = turnHoldController.update(currentHeading);
-            setDrive(0.0, turnPower, 0.0);
+            PPower = PController.update(currentHeading);
+            DPower = Math.max(Math.min(DController.update(currentHeading), 0.5), -0.5);
 
-            telemetry.addData("D Gain", dGain);
+            setDrive(0.0, (useP?PPower:0.0) + (useD?DPower:0.0), 0.0);
+
+
+            telemetry.addData("P Gain (" + (useP?"On":"Off") + ")", pGain);
+            telemetry.addData("D Gain (" + (useD?"On":"Off") + ")", dGain);
             telemetry.addData("Heading", currentHeading);
-            telemetry.addData("TurnPower", turnPower);
-            telemetry.addData("TurnHoldPower", turnHoldPower);
+            telemetry.addData("PPower", PPower);
+            telemetry.addData("DPower", DPower);
             telemetry.update();
         }
     }
