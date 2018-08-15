@@ -2,12 +2,14 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 /**
  * Created by user on 7/10/2018.
  */
 public class PID_Controller{
-    ElapsedTime runtime;
 
+    ElapsedTime runtime;
 
     private double setpoint = 0.0;
     private double error = 0.0;
@@ -35,12 +37,13 @@ public class PID_Controller{
 
     public double update(double input){
         lastError = error;
+        lastTime = time;
         error = setpoint - input;
         time = runtime.seconds();
         pValue = PGAIN * error;
         iValue += IGAIN * (lastError + error) * (0.5) * (time - lastTime);
         dValue = DGAIN * (error - lastError) / (time - lastTime);
-        return pValue + iValue + dValue;
+        return getPID();
     }
 
     public void resetPID() {
@@ -52,4 +55,14 @@ public class PID_Controller{
         iValue = startingIValue;
     }
 
+    public void displayCurrentPID(Telemetry telemetry) {
+        telemetry.addData("P: ",pValue);
+        telemetry.addData("I: ",iValue);
+        telemetry.addData("D: ",dValue);
+        telemetry.addData("PID: ",getPID());
+    }
+
+    private double getPID() {
+        return pValue + iValue + dValue;
+    }
 }
