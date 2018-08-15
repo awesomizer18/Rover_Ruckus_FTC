@@ -7,10 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.Temperature;
-
 @Autonomous(name = "Control Test")
 public class Control_Test extends LinearOpMode {
 
@@ -21,10 +17,10 @@ public class Control_Test extends LinearOpMode {
 
     private BNO055IMU imu;
 
-    private double pGain = 0.01;
+    private double dGain = 1.0;
 
-    PID_Controller turnController       = new PID_Controller(0.0, 0.0, 0.0);
-    PID_Controller turnHoldController   = new PID_Controller(pGain, 0.0, 0.0);
+    PID_Controller turnController       = new PID_Controller(0.025, 0.0, 0.0);
+    PID_Controller turnHoldController   = new PID_Controller(0.0, 0.0, dGain);
     PID_Controller forwardController    = new PID_Controller(0.0, 0.0, 0.0);
     PID_Controller strafeController     = new PID_Controller(0.0, 0.0, 0.0);
 
@@ -36,10 +32,10 @@ public class Control_Test extends LinearOpMode {
         backRightDrive = hardwareMap.get(DcMotor.class, "brd");
         imu = hardwareMap.get(BNO055IMU.class, "imu");
 
-        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         frontLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         frontRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -55,29 +51,37 @@ public class Control_Test extends LinearOpMode {
 
         Heading driveDirection = Heading.createRelativeHeading(0f);
 
-        turnHoldController.setSetpoint(0.0); // Don't turn
-        forwardController.setSetpoint(60.0); // Drive forwards 60 inches (5 feet)
+        turnController.setSetpoint(0.0);
+        turnHoldController.setSetpoint(0.0);
 
         double currentHeading;
         double turnPower;
+        double turnHoldPower;
         while (opModeIsActive()) {
             if (gamepad1.dpad_up || gamepad1.dpad_down)
             {
                 if (gamepad1.dpad_up)
-                    pGain *= 1.1;
+                    dGain *= 1.1;
                 if (gamepad1.dpad_down)
-                    pGain /= 1.1;
-                turnHoldController = new PID_Controller(pGain, 0.0, 0.0);
+                    dGain /= 1.1;
+                turnHoldController = new PID_Controller(0.0, 0.0, dGain);
                 turnHoldController.setSetpoint(0.0);
                 while (gamepad1.dpad_up || gamepad1.dpad_down);
+                for (int i = 0; i < 3; i++)
+                {
+                    turnHoldController.update(driveDirection.getRelativeHeading());
+                }
             }
             currentHeading = driveDirection.getRelativeHeading();
-            turnPower = turnHoldController.update(currentHeading);
+
+            turnPower = turnController.update(currentHeading);
+            turnHoldPower = turnHoldController.update(currentHeading);
             setDrive(0.0, turnPower, 0.0);
 
-            telemetry.addData("P Gain", pGain);
+            telemetry.addData("D Gain", dGain);
             telemetry.addData("Heading", currentHeading);
             telemetry.addData("TurnPower", turnPower);
+            telemetry.addData("TurnHoldPower", turnHoldPower);
             telemetry.update();
         }
     }
