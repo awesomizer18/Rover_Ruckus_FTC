@@ -17,7 +17,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       // turn right
       setDrive( 1.0, -1.0);
 
-      sleep(300);
+      sleep(333);
       // move forward
       setDrive( 1.0, 1.0);
 
@@ -25,7 +25,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 300);
+      sleep( 333);
       //move forward
       setDrive( 1.0, 1.0);
 
@@ -33,7 +33,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       //turn right
       setDrive( -1.0, 1.0);
 
-      sleep( 300);
+      sleep( 333);
       //move forward
       setDrive( 1.0, 1.0);
 
@@ -41,7 +41,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       //turn right
       setDrive( -1.0, 1.0);
 
-      sleep( 300);
+      sleep( 333);
       //move forward
       setDrive( 1.0, 1.0);
 
@@ -49,7 +49,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       //turn right
       setDrive( -1.0, 1.0);
 
-      sleep( 300);
+      sleep( 333);
       //move forward
       setDrive( 1.0, 1.0);
 
@@ -57,7 +57,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       //turn right
       setDrive( -1.0, 1.0);
 
-      sleep( 300);
+      sleep( 333);
       //move forward
       setDrive( 1.0, 1.0);
 
