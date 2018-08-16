@@ -23,6 +23,8 @@ public class Control_Test extends LinearOpMode {
     PID_Controller PController = new PID_Controller(pGain, 0.0, 0.0);
     PID_Controller DController = new PID_Controller(0.0, 0.0, dGain);
 
+    //PID_Controller rangeController = new PID_Controller(1.0)
+
     @Override
     public void runOpMode() throws InterruptedException {
         frontLeftDrive = hardwareMap.get(DcMotor.class, "fld");
