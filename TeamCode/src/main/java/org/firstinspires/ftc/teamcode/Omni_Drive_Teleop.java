@@ -7,9 +7,6 @@ public class Omni_Drive_Teleop extends Omni_Parent
 {
     public void cycle() {
         // Setup a variable for each drive wheel to save power level for telemetry
-        double leftPower;
-        double rightPower;
-
         //leftPower = -controllerThreshold(gamepad1.left_stick_y);
         //rightPower = -controllerThreshold(gamepad1.right_stick_y);
 

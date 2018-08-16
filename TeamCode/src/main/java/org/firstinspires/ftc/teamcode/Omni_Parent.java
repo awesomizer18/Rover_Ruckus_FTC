@@ -58,14 +58,17 @@ public class Omni_Parent extends LinearOpMode {
 
         startRobot();
     }
-
+    public void startRobot() {
+        while (opModeIsActive())
+        {
+            cycle();
+        }
+        sleep(250);
+    }
     public void initializeRobot() {
 
     }
 
-    public void startRobot() {
-
-    }
 
     protected void setDrive(double forwardsPower, double turnPower, double strafePower) {
         frontRightDrive.setPower(forwardsPower - turnPower - strafePower);
@@ -101,4 +104,9 @@ public class Omni_Parent extends LinearOpMode {
 
 
     }
+    public void cycle() {
+
+    }
+
+
 }
