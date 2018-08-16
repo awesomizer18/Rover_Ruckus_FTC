@@ -11,67 +11,67 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive(1.0,1.0);
 
-        sleep(1000);
+        sleep(300);
 
         setDrive(1.0, -1.0);
 
-        sleep(1000);
+        sleep(300);
 
         setDrive(1.0, 1.0);
 
-        sleep(1000);
+        sleep(300);
 
         setDrive(-1.0, 1.0);
 
-        sleep(1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( -1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( -1.0, 1.0);
 
-        sleep(1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( -1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, -1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, -1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, 1.0);
 
-        sleep( 1000);
+        sleep(300);
 
         setDrive( 1.0, -1.0);
 
-        sleep( 1000);
+        sleep(300);
 
     }
 }
