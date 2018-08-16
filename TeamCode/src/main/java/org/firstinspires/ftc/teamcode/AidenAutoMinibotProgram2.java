@@ -8,19 +8,57 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
     public void runAuto() {
         setDrive(1.0,1.0);
 
-        sleep(3000);
+        sleep(1000);
 
         setDrive(1.0, -1.0);
 
-        sleep(3000);
+        sleep(500);
+
+        setDrive(1.0, 1.0);
+
+        sleep(1000);
+
+        setDrive(1.0, -1.0);
+
+        sleep(500);
+
+        setDrive(1.0, 1.0);
+
+        sleep(1000);
+
+        setDrive(1.0, -1.0);
+
+        sleep(500);
+
+        setDrive(1.0, 1.0);
+
+        sleep(1000);
 
         setDrive(-1.0, 1.0);
 
-        sleep(3000);
+        sleep(500);
 
-        setDrive(-1.0, -1.0);
+        setDrive(1.0, 1.0);
 
-        sleep(3000);
+        sleep(1000);
+
+        setDrive(-1.0, 1.0);
+
+        sleep(500);
+
+        setDrive(1.0, 1.0);
+
+        sleep(1000);
+
+        setDrive(-1.0, 1.0);
+
+        sleep(500);
+
+        setDrive(1.0, 1.0);
+
+        sleep(1000);
+
+
 
     }
 }
