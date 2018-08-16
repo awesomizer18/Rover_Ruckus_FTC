@@ -8,7 +8,7 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
     DcMotor leftDrive;
     DcMotor rightDrive;
 
-  @Override
+    @Override
     public void runAuto() {
       // move forward
       setDrive( 1.0, 1.0 );
