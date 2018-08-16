@@ -34,3 +34,4 @@ public class lukes_minibot_auto extends LinearOpMode {
         rightDrive.setPower(rightPower);
     }
 }
+
