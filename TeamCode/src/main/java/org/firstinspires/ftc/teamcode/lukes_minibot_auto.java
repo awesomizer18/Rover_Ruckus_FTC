@@ -15,8 +15,8 @@ public class lukes_minibot_auto extends LinearOpMode {
         leftDrive = hardwareMap.get(DcMotor.class,"left");
         rightDrive = hardwareMap.get(DcMotor.class,"right");
 
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive.setDirection(DcMotor.Direction.FORWARD);
 
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

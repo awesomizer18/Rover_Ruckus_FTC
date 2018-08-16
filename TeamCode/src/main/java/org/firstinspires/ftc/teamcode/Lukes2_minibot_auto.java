@@ -7,11 +7,11 @@ public class Lukes2_minibot_auto extends lukes_minibot_auto{
     @Override
 
     public void runAuto() {
-        setDrive(1.0, 0.5);
+        setDrive(1.0, 0.2);
 
         sleep(3500);
 
-        setDrive(0.5,1.0);
+        setDrive(0.2,1.0);
 
         sleep(3500);
     }
