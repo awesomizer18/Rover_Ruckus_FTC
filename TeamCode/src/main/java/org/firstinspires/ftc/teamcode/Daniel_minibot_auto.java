@@ -10,15 +10,15 @@ public class Daniel_minibot_auto extends lukes_minibot_auto{
         setDrive(1.0,1.0);
         sleep(1500);
         setDrive(-1.0,1.0);
-        sleep(100);
+        sleep(900);
         setDrive(1,1);
         sleep(750);
         setDrive(-1,1);
-        sleep(100);
+        sleep(900);
         setDrive(1,1);
         sleep(1500);
         setDrive(-1,1);
-        sleep(100);
+        sleep(900);
         setDrive(1,1);
         sleep(750);
         setDrive(0,0);
