@@ -13,54 +13,54 @@ public class AndrewMinibotAuto3 extends andrewMinibotAuto {
       // move forward
       setDrive( 1.0, 1.0 );
 
-      sleep(1000);
+      sleep(750);
       // turn right
       setDrive( 1.0, -1.0);
 
-      sleep(1000);
+      sleep(300);
       // move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 1000);
+      sleep( 300);
       //move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 1000);
+      sleep( 300);
       //move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 1000);
+      sleep( 300);
       //move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 1000);
+      sleep( 300);
       //move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
       //turn right
       setDrive( 1.0, -1.0);
 
-      sleep( 1000);
+      sleep( 300);
       //move forward
       setDrive( 1.0, 1.0);
 
-      sleep( 1000);
+      sleep( 750);
     }
 }
