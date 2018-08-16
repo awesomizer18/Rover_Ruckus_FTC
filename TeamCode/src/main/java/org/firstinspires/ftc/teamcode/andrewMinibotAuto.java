@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous (name = "andrew Minibot", group = "")
 public class andrewMinibotAuto extends LinearOpMode {
 
     DcMotor leftDrive;
@@ -25,14 +24,14 @@ public class andrewMinibotAuto extends LinearOpMode {
 
         waitForStart();
 
-        leftDrive.setPower(1.0);
-        rightDrive.setPower(1.0);
+        runAuto();
+    }
 
-        wait(3000);
+    public void runAuto() {
 
-        leftDrive.setPower(1.0);
-        rightDrive.setPower(-1.0);
-
-        wait( 1500);
+    }
+    public void setDrive(double leftPower, double rightPower) {
+        leftDrive.setPower(leftPower);
+        rightDrive.setPower(rightPower);
     }
 }
