@@ -21,7 +21,6 @@ public class andrewMinibotAuto extends LinearOpMode {
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-
         waitForStart();
 
         runAuto();
