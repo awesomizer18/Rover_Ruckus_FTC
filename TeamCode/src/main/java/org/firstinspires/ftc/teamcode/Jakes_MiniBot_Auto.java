@@ -8,59 +8,59 @@ public class Jakes_MiniBot_Auto extends Jakes_Auto_Minibot {
     public void runAuto() {
         setDrive(1.0,1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0,-1.0);
 
-        sleep(2250);
+        sleep(650);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0, -1.0);
 
-        sleep(2250);
+        sleep(650);
 
         setDrive(1.0,1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0,-1.0);
 
-        sleep(2250);
+        sleep( 650);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0,1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0,-1.0);
 
-        sleep(2000);
+        sleep(650);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0, -1.0);
 
-        sleep(2250);
+        sleep(650);
 
         setDrive(1.0,1.0);
 
-        sleep(2000);
+        sleep(800);
 
         setDrive(1.0,-1.0);
 
-        sleep(2250);
+        sleep(650);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(800);
 
 
     }
