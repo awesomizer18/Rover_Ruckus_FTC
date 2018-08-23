@@ -9,11 +9,7 @@ public class Aiden_Figure8_Minibot_Expansion extends AidenMinibotAuto {
        setDrive(1.0, 0.2);
 
        sleep(3000);
-
-       setDrive(1.0,1.0);
-
-       sleep(50);
-
+       
        setDrive(0.2,1.0);
 
        sleep(3000);
