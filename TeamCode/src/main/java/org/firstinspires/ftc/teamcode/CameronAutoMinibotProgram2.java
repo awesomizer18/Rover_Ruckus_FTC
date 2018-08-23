@@ -11,7 +11,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive(1.0,1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive(1.0, -1.0);
 
@@ -19,7 +19,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive(1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive(-1.0, 1.0);
 
@@ -27,7 +27,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( -1.0, 1.0);
 
@@ -35,7 +35,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( -1.0, 1.0);
 
@@ -43,7 +43,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( -1.0, 1.0);
 
@@ -51,7 +51,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( 1.0, -1.0);
 
@@ -59,7 +59,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( 1.0, -1.0);
 
@@ -67,7 +67,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( 1.0, 1.0);
 
-        sleep(300);
+        sleep(1000);
 
         setDrive( 1.0, -1.0);
 
