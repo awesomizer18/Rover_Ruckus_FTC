@@ -12,7 +12,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(207);
+        sleep(150);
 
         setDrive(1.0, 1.0);
 
@@ -20,7 +20,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(203);
+        sleep(150);
 
         setDrive(1.0, 1.0);
 
@@ -28,7 +28,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(203);
+        sleep(150);
 
         setDrive(1.0, 1.0);
 
@@ -36,7 +36,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(200);
+        sleep(100);
 
         setDrive(1.0, 1.0);
 
@@ -44,7 +44,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(200);
+        sleep(150);
 
         setDrive(1.0, 1.0);
 
@@ -52,7 +52,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(205);
+        sleep(150);
 
         setDrive(1.0, 1.0);
 
