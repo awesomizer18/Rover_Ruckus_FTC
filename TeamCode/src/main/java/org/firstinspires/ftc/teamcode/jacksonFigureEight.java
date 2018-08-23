@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous (name = "andrew.MinibotAuto", group = "")
+@Autonomous (name = "Jackson Starts Over.MinibotAuto", group = "")
 public class jacksonFigureEight extends jacksonMinibotAuto {
     @Override
     public void runAuto() {
