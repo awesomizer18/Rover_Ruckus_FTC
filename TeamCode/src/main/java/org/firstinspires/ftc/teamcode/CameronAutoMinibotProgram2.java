@@ -8,6 +8,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
     public void runAuto() {
 
     //will do a figure 8
+        //decrease turn power
 
         setDrive(1.0,1.0);
 
@@ -23,7 +24,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(300);
+        sleep(150);
 
         setDrive( 1.0, 1.0);
 
@@ -31,7 +32,7 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( -1.0, 1.0);
 
-        sleep(300);
+        sleep(150);
 
         setDrive( 1.0, 1.0);
 
@@ -39,13 +40,13 @@ public class CameronAutoMinibotProgram2 extends CameronMinibotAuto {
 
         setDrive( -1.0, 1.0);
 
-        sleep(300);
+        sleep(150);
 
         setDrive( 1.0, 1.0);
 
         sleep(1000);
 
-        setDrive( -1.0, 1.0);
+        setDrive( 1.0, -1.0);
 
         sleep(300);
 
