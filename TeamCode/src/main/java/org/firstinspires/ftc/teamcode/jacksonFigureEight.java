@@ -8,24 +8,6 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
     public void runAuto() {
         figureEight();
         figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
-        figureEight();
 
     }
 
