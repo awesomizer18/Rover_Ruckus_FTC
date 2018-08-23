@@ -10,7 +10,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         sleep(2000);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, -0.2);
 
         sleep(600);
 
@@ -18,7 +18,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         sleep(2000);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, -0.2);
 
         sleep(600);
 
@@ -26,7 +26,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         sleep(2000);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, -0.2);
 
         sleep(600);
 
@@ -34,7 +34,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         sleep(2000);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, -0.2);
 
         sleep(600);
 
@@ -42,7 +42,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         sleep(2000);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, -0.2);
 
         sleep(600);
 
