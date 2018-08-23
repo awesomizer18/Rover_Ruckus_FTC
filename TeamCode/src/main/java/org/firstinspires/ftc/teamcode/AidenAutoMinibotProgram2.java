@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name = "Aiden Auto Minibot Program 2",group = "")
+@Autonomous(name = "Aiden Auto Minibot Figure-8",group = "")
 public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 @Override
     public void runAuto() {
@@ -12,7 +12,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(225);
+        sleep(207);
 
         setDrive(1.0, 1.0);
 
@@ -20,7 +20,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(225);
+        sleep(203);
 
         setDrive(1.0, 1.0);
 
@@ -28,7 +28,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(1.0, -1.0);
 
-        sleep(225);
+        sleep(203);
 
         setDrive(1.0, 1.0);
 
@@ -36,7 +36,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(225);
+        sleep(200);
 
         setDrive(1.0, 1.0);
 
@@ -44,7 +44,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(225);
+        sleep(200);
 
         setDrive(1.0, 1.0);
 
@@ -52,7 +52,7 @@ public class AidenAutoMinibotProgram2 extends AidenMinibotAuto {
 
         setDrive(-1.0, 1.0);
 
-        sleep(225);
+        sleep(205);
 
         setDrive(1.0, 1.0);
 
