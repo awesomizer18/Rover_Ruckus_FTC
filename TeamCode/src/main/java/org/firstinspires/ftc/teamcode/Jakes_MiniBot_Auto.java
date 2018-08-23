@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name = "Jake's Second Auto",group = "")
+@Autonomous(name = ":(",group = "")
 public class Jakes_MiniBot_Auto extends Jakes_Auto_Minibot {
     @Override
     public void runAuto() {
