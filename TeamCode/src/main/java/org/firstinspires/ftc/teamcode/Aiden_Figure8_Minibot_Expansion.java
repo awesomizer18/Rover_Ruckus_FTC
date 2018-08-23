@@ -8,11 +8,11 @@ public class Aiden_Figure8_Minibot_Expansion extends AidenMinibotAuto {
     public void runAuto() {
        setDrive(1.0, 0.2);
 
-       sleep(3000);
-       
+       sleep(2750);
+
        setDrive(0.2,1.0);
 
-       sleep(3000);
+       sleep(3500);
 
     }
 }
