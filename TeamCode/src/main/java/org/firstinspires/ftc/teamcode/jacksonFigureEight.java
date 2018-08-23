@@ -8,46 +8,46 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
     public void runAuto() {
         setDrive(1.0,1.0);
 
-        sleep(2000);
+        sleep(900);
 
-        setDrive(1.0, -0.6);
-
-        sleep(600);
-
-        setDrive(1.0, 1.0);
-
-        sleep(2000);
-
-        setDrive(1.0, -0.6);
+        setDrive(1.0, 0.0);
 
         sleep(600);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(900);
 
-        setDrive(1.0, -0.6);
-
-        sleep(600);
-
-        setDrive(1.0, 1.0);
-
-        sleep(2000);
-
-        setDrive(1.0, -0.6);
+        setDrive(1.0, 0.0);
 
         sleep(600);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(900);
 
-        setDrive(1.0, -0.6);
+        setDrive(1.0, 0.0);
 
         sleep(600);
 
         setDrive(1.0, 1.0);
 
-        sleep(2000);
+        sleep(900);
+
+        setDrive(1.0, 0.0);
+
+        sleep(600);
+
+        setDrive(1.0, 1.0);
+
+        sleep(900);
+
+        setDrive(1.0, 0.0);
+
+        sleep(600);
+
+        setDrive(1.0, 1.0);
+
+        sleep(900);
     }
 }
