@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous (name = "andrew.MinibotAuto", group = "")
+@Autonomous (name = "Jackson Starts Over.MinibotAuto", group = "")
 public class jacksonFigureEight extends jacksonMinibotAuto {
     @Override
     public void runAuto() {
@@ -12,7 +12,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         setDrive(1.0, -0.6);
 
-        sleep(1200);
+        sleep(600);
 
         setDrive(1.0, 1.0);
 
@@ -20,7 +20,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         setDrive(1.0, -0.6);
 
-        sleep(1200);
+        sleep(600);
 
         setDrive(1.0, 1.0);
 
@@ -28,7 +28,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         setDrive(1.0, -0.6);
 
-        sleep(1200);
+        sleep(600);
 
         setDrive(1.0, 1.0);
 
@@ -36,7 +36,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         setDrive(1.0, -0.6);
 
-        sleep(1200);
+        sleep(600);
 
         setDrive(1.0, 1.0);
 
@@ -44,7 +44,7 @@ public class jacksonFigureEight extends jacksonMinibotAuto {
 
         setDrive(1.0, -0.6);
 
-        sleep(1200);
+        sleep(600);
 
         setDrive(1.0, 1.0);
 
