@@ -6,15 +6,15 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 public class Aiden_Figure8_Minibot_Expansion extends AidenMinibotAuto {
     @Override
     public void runAuto() {
-       setDrive(1.0, 0.3);
+       setDrive(1.0, 0.2);
 
        sleep(3000);
 
        setDrive(1.0,1.0);
 
-       sleep(100);
+       sleep(50);
 
-       setDrive(0.3,1.0);
+       setDrive(0.2,1.0);
 
        sleep(3000);
 
