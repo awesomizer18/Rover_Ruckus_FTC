@@ -34,7 +34,7 @@ public class Jakes_MiniBot_Auto extends Jakes_Auto_Minibot {
 
         sleep(800);
 
-      
+
 
     }
 }
