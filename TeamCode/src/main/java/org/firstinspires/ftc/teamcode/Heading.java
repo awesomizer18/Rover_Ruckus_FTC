@@ -23,28 +23,31 @@ public class Heading {
     public static void setFieldOffset(float fieldOffset){
         Heading.fieldOffset = fieldOffset;
     }
+    public static void setImu(BNO055IMU imu) {
+        Heading.imu = imu;
+    }
     public static float getAbsoluteHeading(){
         Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return errorCorrecter(angles.firstAngle);
+        return errorCorrecter(-angles.firstAngle);
     }
     public static float getFieldHeading(){
         return errorCorrecter(getAbsoluteHeading() + fieldOffset);
     }
     private static float errorCorrecter(float sumOfHeadings){
-        if (-180f > sumOfHeadings){
-            sumOfHeadings += 360f;
+        if (sumOfHeadings > 180f){
+            sumOfHeadings = ((sumOfHeadings + 180f) % 360f) - 180f;
         }
-        else if (sumOfHeadings > 180f){
-            sumOfHeadings -= 180f;
+        else if (sumOfHeadings < -180f) {
+            sumOfHeadings = 180f - ((180f - sumOfHeadings) % 360f);
         }
         return sumOfHeadings;
     }
-   /* public static Heading createFieldHeading() {
-
+    public static Heading createFieldHeading(float relativeOffset) {
+        return new Heading(relativeOffset);
     }
-    public Heading createRelativeHeading(){
-
-    }*/
+    public static Heading createRelativeHeading(float relativeOffset){
+        return new Heading(errorCorrecter(relativeOffset + getFieldHeading()));
+    }
     public void setRelativeOffset(float relativeOffset){
         this.relativeOffset = relativeOffset;
     }
