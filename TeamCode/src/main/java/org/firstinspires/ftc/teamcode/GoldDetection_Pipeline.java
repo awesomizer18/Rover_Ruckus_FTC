@@ -33,6 +33,7 @@ public class GoldDetection_Pipeline extends OpenCVPipeline {
     public Mat processFrame(Mat rgba, Mat gray) {
         // First, we change the colorspace from RGBA to HSV, which is usually better for color
         Imgproc.cvtColor(rgba, hsv, Imgproc.COLOR_RGB2HSV, 3);
+
         // Then, we threshold our hsv image so that we get a black/white binary image where white
         // is the blues listed in the specified range of values
         // you can use a program like WPILib GRIP to find these values, or just play around.
