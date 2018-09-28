@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @TeleOp(name = "Andrew Intake Program",group = "")
 public class AndrewIntakeProgram extends OpMode{
 
+    private final double INTAKE_MULTIPLYER = 1.0;
+
     private CRServo leftIntake;
     private CRServo rightIntake;
 
@@ -25,8 +27,13 @@ public class AndrewIntakeProgram extends OpMode{
     @Override
     public void loop() {
         double intakePower = -gamepad1.left_stick_y;
+        intakePower *= INTAKE_MULTIPLYER;
 
         leftIntake.setPower(intakePower);
         rightIntake.setPower(intakePower);
+
+        telemetry.addData("intakePower", intakePower);
+        telemetry.update();
     }
+
 }
