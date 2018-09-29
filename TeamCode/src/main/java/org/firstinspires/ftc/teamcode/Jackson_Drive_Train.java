@@ -35,12 +35,16 @@ public class Jackson_Drive_Train extends OpMode {
 
     @Override
     public void loop() {
-        double leftDrivePower = -gamepad1.left_stick_y;
-        double rightDrivePower = -gamepad1.right_stick_y;
+        double forwardPower = -gamepad1.left_stick_y;
+        double turnPower = gamepad1.right_stick_x;
+        
+        setDrive(forwardPower, turnPower);
+    }
 
-        frontLeftDrive.setPower(leftDrivePower);
-        frontRightDrive.setPower(rightDrivePower);
-
-
+    private void setDrive(double forwardPower, double turnPower) {
+        backLeftDrive.setPower(forwardPower + turnPower);
+        backRightDrive.setPower(forwardPower - turnPower);
+        frontLeftDrive.setPower(forwardPower + turnPower);
+        frontRightDrive.setPower(forwardPower - turnPower);
     }
 }
