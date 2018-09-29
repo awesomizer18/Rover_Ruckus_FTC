@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name = "intake test tyler", group = "")
+@TeleOp(name = "intake test tyler", group = "main")
 public class intake_test_tyler extends OpMode {
     private CRServo leftIntake = null;
     private CRServo rightIntake = null;
