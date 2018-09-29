@@ -18,7 +18,6 @@ public class Ben_Drive_Train extends OpMode {
         backLeftDrive = hardwareMap.get(DcMotor.class, "bl");
         backRightDrive = hardwareMap.get(DcMotor.class, "br");
         frontLeftDrive = hardwareMap.get(DcMotor.class, "fl");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
 
 
         backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
