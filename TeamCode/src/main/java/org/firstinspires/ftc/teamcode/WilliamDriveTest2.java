@@ -43,6 +43,11 @@ public class WilliamDriveTest2 extends OpMode{
         double turnPower = gamepad1.right_stick_x;
         double strafePower = gamepad1.left_stick_x;
 
+        if (Math.abs(strafePower) > Math.abs(forwardPower)) {
+            forwardPower = 0.0;
+        } else {
+            strafePower = 0.0;
+        }
 
         setDrive(forwardPower, turnPower, strafePower);
     }
