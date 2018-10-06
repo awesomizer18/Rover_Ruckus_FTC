@@ -12,10 +12,12 @@ public class Brian_Drive_PID_2 extends OpMode {
     private DcMotor backRightDrive;
     private DcMotor frontLeftDrive;
     private DcMotor frontRightDrive;
-    private PID_Controller forwardPID = new PID_Controller(0.0, 0.0, 0.0);
-    private PID_Controller turnPID = new PID_Controller(0.0, 0.0, 0.0);
-    private PID_Controller strafePID = new PID_Controller(0.0, 0.0, 0.0);
-
+    private PID_Controller forwardPID = new PID_Controller(0.071, 0.0, 0.0);
+    private PID_Controller turnPID = new PID_Controller(0.025, 0.0, 0.0);
+    private PID_Controller strafePID = new PID_Controller(0.071, 0.0, 0.0);
+    private final double ENCODER_COUNTS_PER_INCH = 81.19;
+    private final double ENCODER_COUNTS_PER_DEGREE = 18.06;
+    //20.04 for enc/degree?
 
     @Override
     public void init() {
@@ -38,14 +40,25 @@ public class Brian_Drive_PID_2 extends OpMode {
     }
 
     @Override
+    public void start() {
+        forwardPID.resetPID();
+        turnPID.resetPID();
+        strafePID.resetPID();
+        forwardPID.setSetpoint(getForwardPosition() + 60.0);
+        turnPID.setSetpoint(getTurnPosition());
+        strafePID.setSetpoint(getStrafePosition());
+    }
+
+    @Override
     public void loop() {
-        double forwardPower = 0.0;
-        double turnPower = 0.0;
-        double strafePower = 0.0;
+        double forwardPower = forwardPID.update(getForwardPosition());
+        double turnPower = turnPID.update(getTurnPosition());
+        double strafePower = strafePID.update(getStrafePosition());
 
         setDrive(forwardPower, turnPower, strafePower);
 
     }
+
     private void setDrive(double forwardPower, double turnPower, double strafePower) {
         backLeftDrive.setPower(forwardPower + turnPower - strafePower);
         backRightDrive.setPower(forwardPower - turnPower + strafePower);
@@ -53,4 +66,25 @@ public class Brian_Drive_PID_2 extends OpMode {
         frontRightDrive.setPower(forwardPower - turnPower - strafePower);
     }
 
+    private double getForwardPosition() {
+        double position = backLeftDrive.getCurrentPosition() + backRightDrive.getCurrentPosition() +
+                frontLeftDrive.getCurrentPosition()+ frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= ENCODER_COUNTS_PER_INCH;
+        return position;
+    }
+    private double getTurnPosition() {
+        double position = backLeftDrive.getCurrentPosition() + frontLeftDrive.getCurrentPosition()
+                - backRightDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= ENCODER_COUNTS_PER_DEGREE;
+        return position;
+    }
+    private double getStrafePosition() {
+        double position = backRightDrive.getCurrentPosition() + frontLeftDrive.getCurrentPosition()
+                - backLeftDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= ENCODER_COUNTS_PER_INCH;
+        return position;
+    }
 }
