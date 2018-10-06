@@ -6,14 +6,15 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "Ben_Drive_Test", group = "main")
 public class Ben_Drive_PID extends AndrewDriveTest {
-    private final double EC_PER_IN = 100.0;
+    private final double EC_PER_IN = 81.19;
+    private final double EC_PER_DEGREE = 20.04;
     private DcMotor backLeftDrive;
     private DcMotor backRightDrive;
     private DcMotor frontLeftDrive;
     private DcMotor frontRightDrive;
-    private PID_Controller forwardPID = new PID_Controller(0.0, 0.0, 0.0);
-    private PID_Controller turnPID = new PID_Controller(0.0, 0.0, 0.0);
-    private PID_Controller strafePID = new PID_Controller(0.0,0.0,0.0);
+    private PID_Controller forwardPID = new PID_Controller(0.071, 0.0, 0.0);
+    private PID_Controller turnPID = new PID_Controller(0.025, 0.0, 0.0);
+    private PID_Controller strafePID = new PID_Controller(0.071,0.0,0.0);
 
 
     @Override
