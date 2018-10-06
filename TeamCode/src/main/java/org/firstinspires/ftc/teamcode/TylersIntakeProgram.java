@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @TeleOp(name = "Tyler's Intake Test ",group = "")
 public class TylersIntakeProgram extends OpMode {
 
+    private final double INTAKE_MULTIPLIER = 1.0;
+
     private DcMotor leftIntake;
     private DcMotor rightIntake;
 
@@ -28,8 +30,12 @@ public class TylersIntakeProgram extends OpMode {
     @Override
     public void loop() {
         double intakePower = -gamepad1.right_stick_y;
+        intakePower *= INTAKE_MULTIPLIER;
 
         leftIntake.setPower(intakePower);
         rightIntake.setPower(intakePower);
+
+        telemetry.addData("IntakePower",intakePower);
+        telemetry.update();
     }
 }
