@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "Ben_Drive_Test", group = "main")
 public class Ben_Drive_PID extends AndrewDriveTest {
+    private final double EC_PER_IN = 100.0;
     private DcMotor backLeftDrive;
     private DcMotor backRightDrive;
     private DcMotor frontLeftDrive;
@@ -31,15 +32,22 @@ public class Ben_Drive_PID extends AndrewDriveTest {
         backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-
         gamepad1.setJoystickDeadzone(0.1f);
     }
+    @Override public void start(){
+        forwardPID.resetPID();
+        turnPID.resetPID();
+        strafePID.resetPID();
+        forwardPID.setSetpoint(getForwardPosition() + 60.0);
+        turnPID.setSetpoint(getTurnPosition());
+        strafePID.setSetpoint(getStrafePosition());
 
+    }
     @Override
     public void loop() {
-        double forwardPower = 0.0;
-        double turnPower = 0.0;
-        double strafePower = 0.0;
+        double forwardPower = forwardPID.update(getForwardPosition());
+        double turnPower = turnPID.update(getTurnPosition());
+        double strafePower = strafePID.update(getStrafePosition());
 
         setDrive(forwardPower, turnPower, strafePower);
 
@@ -49,6 +57,27 @@ public class Ben_Drive_PID extends AndrewDriveTest {
         backRightDrive.setPower(forwardPower - turnPower + strafePower);
         frontLeftDrive.setPower(forwardPower + turnPower + strafePower);
         frontRightDrive.setPower(forwardPower - turnPower - strafePower);
+    }
+    private double getForwardPosition(){
+        double position = backLeftDrive.getCurrentPosition() + backRightDrive.getCurrentPosition() +
+                frontLeftDrive.getCurrentPosition() + frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= EC_PER_IN;
+        return position;
+    }
+    private double getTurnPosition(){
+        double position = backLeftDrive.getCurrentPosition() - backRightDrive.getCurrentPosition()
+                + frontLeftDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= EC_PER_IN;
+        return position;
+    }
+    private double getStrafePosition(){
+        double position = -backLeftDrive.getCurrentPosition() + backRightDrive.getCurrentPosition()
+                + frontLeftDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
+        position /= 4.0;
+        position /= EC_PER_IN;
+        return position;
     }
 
 }
