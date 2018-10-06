@@ -1,14 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Disabled
-@TeleOp(name = "Andrew Drive Test", group = "")
-public class AndrewDriveTest extends OpMode {
+@TeleOp(name = "Brian's PID Drive")
+
+public class Brian_Drive_PID_2 extends OpMode {
 
     private DcMotor backLeftDrive;
     private DcMotor backRightDrive;
@@ -18,20 +16,20 @@ public class AndrewDriveTest extends OpMode {
 
     @Override
     public void init() {
-        backLeftDrive = hardwareMap.get(DcMotor.class, "bl");
-        backRightDrive = hardwareMap.get(DcMotor.class, "br");
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "fl");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
+        backLeftDrive = hardwareMap.get(DcMotor.class, "bld");
+        backRightDrive = hardwareMap.get(DcMotor.class, "brd");
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "fld");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "frd");
 
         backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         backRightDrive.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
-        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         gamepad1.setJoystickDeadzone(0.1f);
     }
@@ -42,7 +40,7 @@ public class AndrewDriveTest extends OpMode {
         double turnPower = gamepad1.right_stick_x;
         double strafePower = gamepad1.left_stick_x;
 
-        setDrive(forwardPower, turnPower, strafePower);
+        setDrive(0.0, 0.0, 0.0);
 
     }
     private void setDrive(double forwardPower, double turnPower, double strafePower) {
