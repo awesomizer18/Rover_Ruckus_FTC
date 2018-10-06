@@ -1,19 +1,20 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Disabled
-@TeleOp(name = "Andrew Drive Test", group = "")
-public class AndrewDriveTest extends OpMode {
+@TeleOp(name = "Brian's PID Drive")
+
+public class Brian_Drive_PID_2 extends OpMode {
 
     private DcMotor backLeftDrive;
     private DcMotor backRightDrive;
     private DcMotor frontLeftDrive;
     private DcMotor frontRightDrive;
+    private PID_Controller forwardPID = new PID_Controller(0.0, 0.0, 0.0);
+    private PID_Controller turnPID = new PID_Controller(0.0, 0.0, 0.0);
+    private PID_Controller strafePID = new PID_Controller(0.0, 0.0, 0.0);
 
 
     @Override
@@ -38,9 +39,9 @@ public class AndrewDriveTest extends OpMode {
 
     @Override
     public void loop() {
-        double forwardPower = -gamepad1.left_stick_y;
-        double turnPower = gamepad1.right_stick_x;
-        double strafePower = gamepad1.left_stick_x;
+        double forwardPower = 0.0;
+        double turnPower = 0.0;
+        double strafePower = 0.0;
 
         setDrive(forwardPower, turnPower, strafePower);
 
