@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name = "Ben_Drive_Test", group = "main")
+@TeleOp(name = "Ben_Drive_Test")
 public class Ben_Drive_PID extends AndrewDriveTest {
     private final double EC_PER_IN = 81.19;
     private final double EC_PER_DEGREE = 20.04;
