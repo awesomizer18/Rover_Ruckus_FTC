@@ -7,10 +7,10 @@ public abstract class Robot_Parent extends LinearOpMode {
 
     private final double ENCODER_COUNTS_PER_DEGREE = 18.06;
 
-    private DcMotor backLeftDrive;
-    private DcMotor backRightDrive;
-    private DcMotor frontLeftDrive;
-    private DcMotor frontRightDrive;
+    protected DcMotor backLeftDrive;
+    protected DcMotor backRightDrive;
+    protected DcMotor frontLeftDrive;
+    protected DcMotor frontRightDrive;
 
     private PID_Controller goToTurnPID = new PID_Controller(0.025, 0.0, 0.0);
     private PID_Controller holdTurnPID = new PID_Controller(0.0,0.0,0.0);
@@ -42,14 +42,14 @@ public abstract class Robot_Parent extends LinearOpMode {
 
     // Functions
 
-    private void setDrive(double forwardPower, double turnPower, double strafePower) {
+    protected void setDrive(double forwardPower, double turnPower, double strafePower) {
         backLeftDrive.setPower(forwardPower + turnPower - strafePower);
         backRightDrive.setPower(forwardPower - turnPower + strafePower);
         frontLeftDrive.setPower(forwardPower + turnPower + strafePower);
         frontRightDrive.setPower(forwardPower - turnPower - strafePower);
     }
 
-    private double getTurnPosition() {
+    protected double getTurnPosition() {
         double position = backLeftDrive.getCurrentPosition() + frontLeftDrive.getCurrentPosition()
                 - backRightDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
         position /= 4.0;
