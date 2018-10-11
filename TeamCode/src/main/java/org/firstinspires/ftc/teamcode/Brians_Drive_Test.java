@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Disabled
 @TeleOp(name="Brian's Drive Test")
-public class Brians_Drive_Trest extends OpMode {
+public class Brians_Drive_Test extends OpMode {
     private DcMotor Back_Left;
     private DcMotor Back_Right;
     private DcMotor Front_Left;
