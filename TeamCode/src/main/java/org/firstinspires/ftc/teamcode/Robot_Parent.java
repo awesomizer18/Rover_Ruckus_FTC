@@ -15,7 +15,7 @@ public abstract class Robot_Parent extends LinearOpMode {
     private PID_Controller goToTurnPID = new PID_Controller(0.025, 0.0, 0.0);
     private PID_Controller holdTurnPID = new PID_Controller(0.0,0.0,0.0);
 
-    @Override
+        @Override
     public void runOpMode() throws InterruptedException {
         backLeftDrive = hardwareMap.get(DcMotor.class, "bld");
         backRightDrive = hardwareMap.get(DcMotor.class, "brd");
@@ -33,12 +33,16 @@ public abstract class Robot_Parent extends LinearOpMode {
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         initialize();
+        telemetry.addLine("Initialization Complete");
+        telemetry.update();
         waitForStart();
         play();
     }
 
     public abstract void initialize();
     public abstract void play();
+    public abstract void setUp();
+    public abstract void begin();
 
     // Functions
 
