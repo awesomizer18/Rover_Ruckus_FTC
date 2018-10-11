@@ -41,7 +41,7 @@ public abstract class Robot_Parent extends LinearOpMode {
 
     public abstract void initialize();
     public abstract void play();
-    public abstract void setUp();
+    public abstract void setup();
     public abstract void begin();
 
     // Functions
