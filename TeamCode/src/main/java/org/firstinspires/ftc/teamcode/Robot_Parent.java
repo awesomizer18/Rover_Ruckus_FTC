@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public abstract class Robot_Parent extends LinearOpMode {
 
+    // TODO: remember to set values to diff number
     private final double ENCODER_COUNTS_PER_DEGREE = 18.06;
 
     protected DcMotor backLeftDrive;
@@ -12,10 +13,10 @@ public abstract class Robot_Parent extends LinearOpMode {
     protected DcMotor frontLeftDrive;
     protected DcMotor frontRightDrive;
 
-    private PID_Controller goToTurnPID = new PID_Controller(0.025, 0.0, 0.0);
-    private PID_Controller holdTurnPID = new PID_Controller(0.0,0.0,0.0);
+    protected PID_Controller goToTurnPID = new PID_Controller(0.025, 0.0, 0.0);
+    protected PID_Controller holdTurnPID = new PID_Controller(0.0,0.0,0.0);
 
-        @Override
+    @Override
     public void runOpMode() throws InterruptedException {
         backLeftDrive = hardwareMap.get(DcMotor.class, "bld");
         backRightDrive = hardwareMap.get(DcMotor.class, "brd");
