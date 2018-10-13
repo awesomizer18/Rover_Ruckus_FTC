@@ -5,32 +5,28 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @Disabled
-@TeleOp (name = "Ben_Drive_Train", group = "main")
+@TeleOp (name = "Ben_LittleBot_Test", group = "main")
 public class Ben_Drive_Train extends OpMode {
-    private DcMotor backLeftDrive = null;
-    private DcMotor backRightDrive = null;
-    private DcMotor frontLeftDrive = null;
-    private DcMotor frontRightDrive = null;
-  
+    private DcMotor leftDrive = null;
+    private DcMotor rightDrive = null;
+    private Servo arm = null;
+
 
     @Override
     public void init() {
-        backLeftDrive = hardwareMap.get(DcMotor.class, "bl");
-        backRightDrive = hardwareMap.get(DcMotor.class, "br");
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "fl");
+        leftDrive = hardwareMap.get(DcMotor.class, "l");
+        rightDrive = hardwareMap.get(DcMotor.class, "r");
+        arm = hardwareMap.get(Servo.class, "i");
 
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        backLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm.setDirection(Servo.Direction.FORWARD);
 
         gamepad1.setJoystickDeadzone(0.1f);
 
@@ -47,12 +43,21 @@ public class Ben_Drive_Train extends OpMode {
             setDrive(drive, turn, 0.0);
         else
             setDrive(0.0, turn, strafe);
+
+        if (gamepad1.y){
+            arm.setPosition(1.0);
+        }
+        else if (gamepad1.x){
+            arm.setPosition(0.5);
+        }
+        else{
+            arm.setPosition(0.0);
+        }
+
     }
     protected void setDrive(double forwardsPower, double turnPower, double strafePower) {
-        frontRightDrive.setPower(forwardsPower - turnPower - strafePower);
-        backRightDrive.setPower(forwardsPower - turnPower + strafePower);
-        frontLeftDrive.setPower(forwardsPower + turnPower + strafePower);
-        backLeftDrive.setPower(forwardsPower + turnPower - strafePower);
+        leftDrive.setPower(forwardsPower + turnPower + strafePower);
+        rightDrive.setPower(forwardsPower + turnPower - strafePower);
     }
 
 }
