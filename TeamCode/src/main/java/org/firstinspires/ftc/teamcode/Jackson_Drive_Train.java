@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Disabled
-@TeleOp (name = "Jackson's cool drive", group = "")
+@TeleOp (name = "Jackson's drive", group = "")
 public class Jackson_Drive_Train extends OpMode {
     private DcMotor backLeftDrive = null;
     private DcMotor backRightDrive = null;
