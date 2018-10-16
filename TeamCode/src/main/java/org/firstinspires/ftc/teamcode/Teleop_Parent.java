@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 public abstract class Teleop_Parent extends Robot_Parent {
-    private PID_Controller holdTurnPID = new PID_Controller(0.025, 0.0, 0.0);
+    protected PID_Controller holdTurnPID = new PID_Controller(0.025, 0.0, 0.0);
 
     @Override
     public void getReady() {
