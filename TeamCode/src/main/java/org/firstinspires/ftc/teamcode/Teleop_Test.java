@@ -6,9 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class Teleop_Test extends Teleop_Parent {
     @Override
     public void run() {
-        double drivePower = gamepad1.left_stick_x;
+        double drivePower = -gamepad1.left_stick_y;
         double turnPower = gamepad1.right_stick_x;
-        double strafePower = gamepad1.right_stick_y;
+        double strafePower = gamepad1.left_stick_x;
         setDrive(drivePower,turnPower, strafePower);
     }
 
