@@ -6,7 +6,7 @@ public abstract class Autonomous_Parent extends Robot_Parent {
     protected PID_Controller strafePID = new PID_Controller(0.071,0.0,0.0);
     protected PID_Controller turnPID = new PID_Controller(0.025, 0.0, 0.0);
 
-    private final double EC_PER_IN = 81.19;
+    private final double EC_PER_IN = 104.7;
 
     @Override
     public void getReady() {

@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public abstract class Robot_Parent extends LinearOpMode {
 
-    protected final double EC_PER_DEGREE = 20.04;
+    protected final double EC_PER_DEGREE = 21.5;
     protected DcMotor backLeftDrive;
     protected DcMotor backRightDrive;
     protected DcMotor frontLeftDrive;
