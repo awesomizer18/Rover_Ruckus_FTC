@@ -28,8 +28,6 @@ public class Andrew_Teleop_Test extends OpMode {
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        arm.setPosition(Servo.MAX_POSITION);
-
         gamepad1.setJoystickDeadzone(0.1f);
     }
 
