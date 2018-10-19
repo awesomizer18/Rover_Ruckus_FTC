@@ -21,22 +21,17 @@ public abstract class Autonomous_Parent extends Robot_Parent {
     }
 
     protected double getForwardPosition() {
-        double position = backLeftDrive.getCurrentPosition() +
-                frontLeftDrive.getCurrentPosition() + frontRightDrive.getCurrentPosition() +
-                backRightDrive.getCurrentPosition();
+        double position = leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition();
 
-        position /= 4.0;
+        position /= 2.0;
         position /= ENCODER_COUNTS_PER_INCH;
 
         return position;
     }
 
     protected double getStrafePosition() {
-        double position = -backLeftDrive.getCurrentPosition() +
-                frontLeftDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition() +
-                backRightDrive.getCurrentPosition();
+        double position = middleDrive.getCurrentPosition();
 
-        position /= 4.0;
         position /= ENCODER_COUNTS_PER_INCH;
 
         return position;

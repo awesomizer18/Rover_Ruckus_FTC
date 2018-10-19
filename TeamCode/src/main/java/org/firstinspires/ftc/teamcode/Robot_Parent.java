@@ -8,30 +8,28 @@ public abstract class Robot_Parent extends LinearOpMode {
     // TODO: remember to set values to diff number
     private final double ENCODER_COUNTS_PER_DEGREE = 18.06;
 
-    protected DcMotor backLeftDrive;
-    protected DcMotor backRightDrive;
-    protected DcMotor frontLeftDrive;
-    protected DcMotor frontRightDrive;
+    protected DcMotor leftDrive;
+    protected DcMotor rightDrive;
+    protected DcMotor middleDrive;
 
     protected PID_Controller goToTurnPID = new PID_Controller(0.025, 0.0, 0.0);
     protected PID_Controller holdTurnPID = new PID_Controller(0.0,0.0,0.0);
 
     @Override
     public void runOpMode() throws InterruptedException {
-        backLeftDrive = hardwareMap.get(DcMotor.class, "bld");
-        backRightDrive = hardwareMap.get(DcMotor.class, "brd");
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "fld");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "frd");
+        leftDrive = hardwareMap.get(DcMotor.class, "ld");
+        rightDrive = hardwareMap.get(DcMotor.class, "rd");
+        middleDrive = hardwareMap.get(DcMotor.class, "md");
 
-        backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        backRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        middleDrive.setDirection(DcMotor.Direction.FORWARD);
 
-        backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        backRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        //middle drive assumes motor faces backwards. Switch if motor faces forwards
+
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        middleDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         initialize();
         telemetry.addLine("Initialization Complete");
@@ -48,16 +46,14 @@ public abstract class Robot_Parent extends LinearOpMode {
     // Functions
 
     protected void setDrive(double forwardPower, double turnPower, double strafePower) {
-        backLeftDrive.setPower(forwardPower + turnPower - strafePower);
-        backRightDrive.setPower(forwardPower - turnPower + strafePower);
-        frontLeftDrive.setPower(forwardPower + turnPower + strafePower);
-        frontRightDrive.setPower(forwardPower - turnPower - strafePower);
+        leftDrive.setPower(forwardPower + turnPower);
+        rightDrive.setPower(forwardPower - turnPower);
+        middleDrive.setPower(strafePower);
     }
 
     protected double getTurnPosition() {
-        double position = backLeftDrive.getCurrentPosition() + frontLeftDrive.getCurrentPosition()
-                - backRightDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
-        position /= 4.0;
+        double position = leftDrive.getCurrentPosition() - rightDrive.getCurrentPosition();
+        position /= 2.0;
         position /= ENCODER_COUNTS_PER_DEGREE;
         return position;
     }
