@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public abstract class Robot_Parent extends LinearOpMode {
 
@@ -48,6 +47,16 @@ public abstract class Robot_Parent extends LinearOpMode {
         frontLeftDrive.setPower(forwardPower + turnPower + strafePower);
         frontRightDrive.setPower(forwardPower - turnPower - strafePower);
     }
+    protected void driveForward(double forwardPower) {
+        setDrive(forwardPower, 0.0, 0.0);
+    }
+    protected void driveTurn(double turnPower) {
+        setDrive(0.0, turnPower, 0.0);
+    }
+    protected void driveStrafe(double strafePower) {
+        setDrive(0.0, 0.0, strafePower);
+    }
+
     protected double getTurnPosition() {
         double position = backLeftDrive.getCurrentPosition() - backRightDrive.getCurrentPosition()
                 + frontLeftDrive.getCurrentPosition() - frontRightDrive.getCurrentPosition();
@@ -55,4 +64,9 @@ public abstract class Robot_Parent extends LinearOpMode {
         position /= EC_PER_DEGREE;
         return position;
     }
+
+    protected void waitSeconds(double seconds) {
+        sleep((long) (seconds * 1000.0));
+    }
 }
+
