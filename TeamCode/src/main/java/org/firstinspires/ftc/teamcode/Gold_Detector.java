@@ -25,6 +25,7 @@ public class Gold_Detector extends Base_Detector {
     private Rect goldRect = new Rect();//sets up rectangle around gold
     private YellowColorFilter yellowColorFilter = new YellowColorFilter(mainMat);
 
+    public Image_Triangulator triangulator = new Image_Triangulator(0.5, 0.5);
 
 
     //HSV values for yellow
@@ -83,6 +84,11 @@ public class Gold_Detector extends Base_Detector {
                         screenPosition.y, new Point(10, getAdjustedSize().height - 30), 0,
                 1, new Scalar(255, 255, 0), 1);
         return displayMat;
+    }
+    @Override
+    public void useDefaults(){
+        addScorer(triangulator);
+
     }
 }
 
