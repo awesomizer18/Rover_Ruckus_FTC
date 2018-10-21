@@ -25,6 +25,8 @@ public class Gold_Detector extends Base_Detector {
     private Rect goldRect = new Rect();//sets up rectangle around gold
     private YellowColorFilter yellowColorFilter = new YellowColorFilter(mainMat);
 
+
+
     //HSV values for yellow
 
     public Gold_Detector() {
@@ -41,7 +43,7 @@ public class Gold_Detector extends Base_Detector {
         imput.release();
 
         Imgproc.GaussianBlur(mainMat, mainMat, new Size(5, 5), 0);
-        yellowColorFilter.process(mainMat.clone(), yellowMat);
+        //yellowColorFilter.process(mainMat.clone(), yellowMat);
 
         List<MatOfPoint> contoursYellow = new ArrayList<>();
         Imgproc.findContours(yellowMat, contoursYellow, countorMat, Imgproc.RETR_TREE, Imgproc.

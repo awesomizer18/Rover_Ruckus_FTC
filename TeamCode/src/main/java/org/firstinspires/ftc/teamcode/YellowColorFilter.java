@@ -22,5 +22,6 @@ public class YellowColorFilter extends OpenCVPipeline {
         rgba.convertTo(hsv, Imgproc.COLOR_RGB2HSV);
         //TODO: Finish putting Mat into array
 
+        return null;//remove after compiling
     }
 }

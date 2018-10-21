@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.sun.tools.javac.comp.Todo;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.corningrobotics.enderbots.endercv.OpenCVPipeline;
 import org.opencv.core.Mat;
@@ -11,7 +12,6 @@ import org.opencv.imgproc.Imgproc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public abstract class Base_Detector extends OpenCVPipeline {
 
     public abstract Mat process(Mat input);
@@ -44,12 +44,11 @@ public abstract class Base_Detector extends OpenCVPipeline {
         totalScore += calculateScore(input);
         return totalScore;
     }
-
-    @Override
     public Mat processFrame(Mat rgba, Mat gray) {
         firstSize = rgba.size();
+        adjustedSize = new Size(firstSize.width * reducedImageRatio, firstSize.height
+                * reducedImageRatio);
 
-        adjustedSize = reducedImageQuality;
         rgba.convertTo(hsv, Imgproc.COLOR_RGB2HSV);
         rgba.copyTo(mainMat);
 
