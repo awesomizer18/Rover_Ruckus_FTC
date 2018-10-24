@@ -20,7 +20,7 @@ public class YellowColorFilter extends OpenCVPipeline {
     @Override
     public Mat processFrame(Mat rgba, Mat gray) {
         rgba.convertTo(hsv, Imgproc.COLOR_RGB2HSV);
-        //TODO: Finish putting Mat into array
+        //TODO: Using erode and dilate, filter yellow and locate each yellow cube
 
         return null;//remove after compiling
     }

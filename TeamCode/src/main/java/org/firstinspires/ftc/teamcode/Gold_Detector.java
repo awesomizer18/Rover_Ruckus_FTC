@@ -37,11 +37,11 @@ public class Gold_Detector extends Base_Detector {
 
 
     @Override
-    public Mat process(Mat imput) {
+    public Mat process(Mat input) {
 
-        imput.copyTo(displayMat);
-        imput.copyTo(mainMat);
-        imput.release();
+        input.copyTo(displayMat);
+        input.copyTo(mainMat);
+        input.release();
 
         Imgproc.GaussianBlur(mainMat, mainMat, new Size(5, 5), 0);
         //yellowColorFilter.process(mainMat.clone(), yellowMat);
