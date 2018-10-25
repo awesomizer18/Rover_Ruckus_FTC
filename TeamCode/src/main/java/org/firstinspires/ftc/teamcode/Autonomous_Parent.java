@@ -71,23 +71,30 @@ public abstract class Autonomous_Parent extends Robot_Parent {
     protected void sample() {
         /*TODO: Insert Sampling Code:
         Must return a case weather left, right, or center; must complete a condition for each.
-        Also must return a case if it is facing crater or depot.
+        Also, this is JUST for if facing crater.
          */
     }
     protected void collectMineral() {
-        //TODO: Insert Intake Code
+        //TODO: Insert Intake Code (Also have the robot move forward for after landing/starting)
     }
     protected void placeTeamMarker() {
         //TODO: Placing Marker (Mechanism needed)
     }
-    protected void driveToDepot(boolean sample) {
-        land();
+    protected void scoreMineralInDepot(){
+        //TODO: Insert Scoring code in depot (Mechanism needed)
+    }
+    protected void driveToDepot(boolean sample, boolean collect) {
         if (sample) {
             driveStraight(1.5);
             sample();
             driveStraight(1.0);
         }
-        else {
+        else if (collect) {
+            driveStraight(1.5);
+            collectMineral();
+            driveStraight(1.0);
+        }
+            else{
            driveStraight(2.5);
         }
     }
