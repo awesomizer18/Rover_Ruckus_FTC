@@ -62,10 +62,6 @@ public abstract class Robot_Parent extends LinearOpMode {
         frontRightDrive.setPower(forwardPower - turnPower - strafePower);
     }
 
-    protected double getTurnPosition() {
-        return Heading.getFieldHeading();
-    }
-
     private void setupImu() {
         BNO055IMU.Parameters imuParameters = new BNO055IMU.Parameters();
         imuParameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
