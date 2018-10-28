@@ -19,8 +19,8 @@ public class Image_Display_Test extends OpMode {
         detector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
         detector.useDefaults();
         detector.reducedImageRatio = 0.4;
-        detector.triangulator.perfectRatio = 5;
-        detector.triangulator.saturation = 1.0;
+        detector.triangulator.perfectRatio = 1.0;
+        detector.triangulator.saturation = 0.005;
         detector.enable();
 
 

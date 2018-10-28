@@ -25,7 +25,7 @@ public class Gold_Detector extends Base_Detector {
     private Rect goldRect = new Rect();//sets up rectangle around gold
     private YellowColorFilter yellowColorFilter = new YellowColorFilter();
 
-    public Image_Triangulator triangulator = new Image_Triangulator(0.5, 0.5);
+    public Image_Triangulator triangulator = new Image_Triangulator( 1.0,3);
 
 
     //HSV values for yellow

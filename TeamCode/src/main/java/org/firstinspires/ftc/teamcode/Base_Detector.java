@@ -15,14 +15,13 @@ import java.util.List;
 public abstract class Base_Detector extends OpenCVPipeline {
 
     public abstract Mat process(Mat input);
+    public abstract void useDefaults();
 
 
     private List<Base_Image_Triangulator> scorers = new ArrayList<>();
     private Size firstSize;
     private Size adjustedSize;
     private Mat mainMat = new Mat();
-    protected Mat hsv = new Mat();
-    public abstract void useDefaults();
 
     public Speed_Settings.detectionSpeed speed;
     public double reducedImageRatio = 0.25; //This'll have to be tested for sure
@@ -54,7 +53,6 @@ public abstract class Base_Detector extends OpenCVPipeline {
         adjustedSize = new Size(firstSize.width * reducedImageRatio, firstSize.height
                 * reducedImageRatio);
 
-        rgba.convertTo(hsv, Imgproc.COLOR_RGB2HSV);
         rgba.copyTo(mainMat);
 
         if (rgba.empty()){return rgba; }
