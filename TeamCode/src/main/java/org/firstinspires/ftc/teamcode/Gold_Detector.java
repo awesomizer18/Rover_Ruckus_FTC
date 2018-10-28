@@ -23,7 +23,7 @@ public class Gold_Detector extends Base_Detector {
     private boolean found = false;//If we've seen the gold yet
     private Point screenPosition = new Point();//coordinates of gold
     private Rect goldRect = new Rect();//sets up rectangle around gold
-    private YellowColorFilter yellowColorFilter = new YellowColorFilter(mainMat);
+    private YellowColorFilter yellowColorFilter = new YellowColorFilter();
 
     public Image_Triangulator triangulator = new Image_Triangulator(0.5, 0.5);
 
@@ -44,7 +44,7 @@ public class Gold_Detector extends Base_Detector {
         input.release();
 
         Imgproc.GaussianBlur(mainMat, mainMat, new Size(5, 5), 0);
-        //yellowColorFilter.process(mainMat.clone(), yellowMat);
+        yellowColorFilter.process(mainMat.clone(), yellowMat);
 
         List<MatOfPoint> contoursYellow = new ArrayList<>();
         Imgproc.findContours(yellowMat, contoursYellow, countorMat, Imgproc.RETR_TREE, Imgproc.
