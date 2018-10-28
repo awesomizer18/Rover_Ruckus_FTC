@@ -90,6 +90,25 @@ public class Gold_Detector extends Base_Detector {
         addScorer(triangulator);
 
     }
+    public Point getScreenPosition(){
+        return screenPosition;
+    }
+
+    /**
+     * Returns the gold element's found rectangle
+     * @return gold element rect
+     */
+    public Rect getFoundRect() {
+        return goldRect;
+    }
+
+    /**
+     * Returns if a gold mineral is being tracked/detected
+     * @return if a gold mineral is being tracked/detected
+     */
+    public boolean isFound() {
+        return found;
+    }
 }
 
 
