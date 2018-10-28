@@ -21,11 +21,19 @@ public class Gold_Detector extends Base_Detector {
     private Mat countorMat = new Mat();
 
     private boolean found = false;//If we've seen the gold yet
+    private boolean aligned = false;
+    private double  goldXPos = 0;
+
+    // Detector settings
+    public boolean debugAlignment = true;
+    public double alignPosOffset = 0;
+    public double alignSize = 100;
     private Point screenPosition = new Point();//coordinates of gold
     private Rect goldRect = new Rect();//sets up rectangle around gold
     private YellowColorFilter yellowColorFilter = new YellowColorFilter();
 
     public Image_Triangulator triangulator = new Image_Triangulator( 1.0,3);
+    public Perfect_Difference_Triangulator perfect_difference_triangulator = new Perfect_Difference_Triangulator(0.01);
 
 
     //HSV values for yellow
@@ -63,49 +71,71 @@ public class Gold_Detector extends Base_Detector {
             Imgproc.rectangle(displayMat, rect.tl(), rect.br(), new Scalar(0, 0, 255), 2); // Draw rect
 
             // If the result is better then the previously tracked one, set this rect as the new best
-            if (score < Double.MAX_VALUE) {
-                score = Double.MAX_VALUE;
+            if (score < bestDifference) {
+                bestDifference = score;
                 bestRect = rect;
             }
 
         }
+        double alignX    = (getAdjustedSize().width / 2) + alignPosOffset; // Center point in X Pixels
+        double alignXMin = alignX - (alignSize / 2); // Min X Pos in pixels
+        double alignXMax = alignX +(alignSize / 2); // Max X pos in pixels
+        double xPos;
 
         if (bestRect != null) {
             Imgproc.rectangle(displayMat, bestRect.tl(), bestRect.br(), new Scalar(255, 0, 0), 4);
             Imgproc.putText(displayMat, "Chosen", bestRect.tl(), 0, 1, new Scalar(255, 255, 255));
 
-            screenPosition = new Point(bestRect.x, bestRect.y);
-            goldRect = bestRect;
+            xPos = bestRect.x + (bestRect.width / 2);
+            goldXPos = xPos;
+
+            Imgproc.circle(displayMat, new Point( xPos, bestRect.y + (bestRect.height / 2)), 5, new Scalar(0,255,0),2);
+
+            if(xPos < alignXMax && xPos > alignXMin){
+                aligned = true;
+            }else{
+                aligned = false;
+            }
+            Imgproc.putText(displayMat,"Current X: " + bestRect.x,new Point(10,getAdjustedSize().height - 10),0,0.5, new Scalar(255,255,255),1);
             found = true;
+
         } else {
             found = false;
+            aligned = false;
         }
-        Imgproc.putText(displayMat, "Result: " + screenPosition.x + "/" +
-                        screenPosition.y, new Point(10, getAdjustedSize().height - 30), 0,
-                1, new Scalar(255, 255, 0), 1);
+        if(debugAlignment){
+
+            //Draw debug alignment info
+            if(isFound()){
+                Imgproc.line(displayMat,new Point(goldXPos, getAdjustedSize().height), new Point(goldXPos, getAdjustedSize().height - 30),new Scalar(255,255,0), 2);
+            }
+
+            Imgproc.line(displayMat,new Point(alignXMin, getAdjustedSize().height), new Point(alignXMin, getAdjustedSize().height - 40),new Scalar(0,255,0), 2);
+            Imgproc.line(displayMat,new Point(alignXMax, getAdjustedSize().height), new Point(alignXMax,getAdjustedSize().height - 40),new Scalar(0,255,0), 2);
+        }
+        Imgproc.putText(displayMat,"Result: " + aligned,new Point(10,getAdjustedSize().height - 30),0,1, new Scalar(255,255,0),1);
+
+
         return displayMat;
+
     }
     @Override
     public void useDefaults(){
         addScorer(triangulator);
+        addScorer(perfect_difference_triangulator);
 
     }
-    public Point getScreenPosition(){
-        return screenPosition;
+    public boolean getAligned(){
+        return aligned;
     }
 
-    /**
-     * Returns the gold element's found rectangle
-     * @return gold element rect
-     */
-    public Rect getFoundRect() {
-        return goldRect;
+
+    public double getXPosition(){
+        return goldXPos;
     }
 
-    /**
-     * Returns if a gold mineral is being tracked/detected
-     * @return if a gold mineral is being tracked/detected
-     */
+
+
     public boolean isFound() {
         return found;
     }

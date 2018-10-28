@@ -23,7 +23,7 @@ public abstract class Base_Detector extends OpenCVPipeline {
     private Size adjustedSize;
     private Mat mainMat = new Mat();
 
-    public Speed_Settings.detectionSpeed speed;
+    public Speed_Settings.detectionSpeed speed = Speed_Settings.detectionSpeed.MODERATE;
     public double reducedImageRatio = 0.25; //This'll have to be tested for sure
     public Size reducedImageQuality = new Size(640, 480);//just a guess
     protected String detectorName = "Base_Detector";

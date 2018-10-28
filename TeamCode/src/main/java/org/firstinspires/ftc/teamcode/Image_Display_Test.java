@@ -18,9 +18,15 @@ public class Image_Display_Test extends OpMode {
         detector = new Gold_Detector();
         detector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
         detector.useDefaults();
+
+        detector.alignSize = 100;
+        detector.alignPosOffset = 0;
         detector.reducedImageRatio = 0.4;
+
         detector.triangulator.perfectRatio = 1.0;
         detector.triangulator.saturation = 0.005;
+        detector.perfect_difference_triangulator.weight = 0.005;
+
         detector.enable();
 
 
@@ -30,9 +36,7 @@ public class Image_Display_Test extends OpMode {
     public void init_loop() {
     }
 
-    /*
-     * Code to run ONCE when the driver hits PLAY
-     */
+
     @Override
     public void start() {
 
@@ -41,11 +45,10 @@ public class Image_Display_Test extends OpMode {
 
     @Override
     public void loop() {
+        telemetry.addData("IsAligned" , detector.getAligned());
+        telemetry.addData("X Pos" , detector.getXPosition());
     }
 
-    /*
-     * Code to run ONCE after the driver hits STOP
-     */
     @Override
     public void stop() {
         detector.disable();
