@@ -28,9 +28,7 @@ public class Gold_Detector extends Base_Detector {
     public boolean debugAlignment = true;
     public double alignPosOffset = 0;
     public double alignSize = 100;
-    private Point screenPosition = new Point();//coordinates of gold
-    private Rect goldRect = new Rect();//sets up rectangle around gold
-    private YellowColorFilter yellowColorFilter = new YellowColorFilter();
+    public YellowColorFilter yellowColorFilter = new YellowColorFilter();
 
     public Image_Triangulator triangulator = new Image_Triangulator( 1.0,3);
     public Perfect_Difference_Triangulator perfect_difference_triangulator = new Perfect_Difference_Triangulator(0.01);

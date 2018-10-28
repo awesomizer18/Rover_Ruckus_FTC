@@ -24,7 +24,7 @@ public abstract class Base_Detector extends OpenCVPipeline {
     private Mat mainMat = new Mat();
 
     public Speed_Settings.detectionSpeed speed = Speed_Settings.detectionSpeed.MODERATE;
-    public double reducedImageRatio = 0.25; //This'll have to be tested for sure
+    public double reducedImageRatio = 0.5; //This'll have to be tested for sure
     public Size reducedImageQuality = new Size(640, 480);//just a guess
     protected String detectorName = "Base_Detector";
     public double maxDifference = 10;
@@ -41,9 +41,13 @@ public abstract class Base_Detector extends OpenCVPipeline {
 
     public double calculateScore(Mat input){
         double totalScore = 0;
-        totalScore += calculateScore(input);
+        for(Base_Image_Triangulator scorer : scorers){
+            totalScore += scorer.calculateScore(input);
+        }
+
         return totalScore;
     }
+
     public void addScorer(Base_Image_Triangulator newScorer){
         scorers.add(newScorer);
     }
