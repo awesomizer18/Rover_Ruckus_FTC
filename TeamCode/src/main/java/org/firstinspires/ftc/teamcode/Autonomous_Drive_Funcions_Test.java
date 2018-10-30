@@ -9,28 +9,26 @@ public class Autonomous_Drive_Funcions_Test extends Autonomous_Parent{
     public void go() {
         super.go();
         driveForwardNorm(12);
-        waitSeconds(1);
+        while(!gamepad1.x);while(gamepad1.x);
         driveBackwardNorm(12);
-        waitSeconds(1);
+        while(!gamepad1.x);while(gamepad1.x);
         driveTurnLeftNorm(90);
-        waitSeconds(1);
+        while(!gamepad1.x);while(gamepad1.x);
         driveTurnRightNorm(90);
-        waitSeconds(1);
+        while(!gamepad1.x);while(gamepad1.x);
         driveForwardPID(12);
-        waitSeconds(1);
+        while(!gamepad1.x);while(gamepad1.x);
         driveBackwardPID(12);
-        waitSeconds(1);
-
-        waitSeconds(10.0);
+        while(!gamepad1.x);while(gamepad1.x);
 
         driveForward(1.0);
-        waitSeconds(1.0);
+        while(!gamepad1.x);while(gamepad1.x);
         driveForward(-1.0);
-        waitSeconds(1.0);
+        while(!gamepad1.x);while(gamepad1.x);
         driveStrafe(1.0);
-        waitSeconds(1.0);
+        while(!gamepad1.x);while(gamepad1.x);
         driveStrafe(-1.0);
-        waitSeconds(1.0);
+        while(!gamepad1.x);while(gamepad1.x);
 
 
     }
