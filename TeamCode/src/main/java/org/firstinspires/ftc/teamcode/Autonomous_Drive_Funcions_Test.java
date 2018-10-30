@@ -9,11 +9,17 @@ public class Autonomous_Drive_Funcions_Test extends Autonomous_Parent{
     public void go() {
         super.go();
         driveForwardNorm(12);
+        waitSeconds(1);
         driveBackwardNorm(12);
+        waitSeconds(1);
         driveTurnLeftNorm(90);
+        waitSeconds(1);
         driveTurnRightNorm(90);
+        waitSeconds(1);
         driveForwardPID(12);
+        waitSeconds(1);
         driveBackwardPID(12);
+        waitSeconds(1);
 
         waitSeconds(10.0);
 
